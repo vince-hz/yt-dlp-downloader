@@ -17,3 +17,4 @@ displayName: MediaDownloaer
 dependencies:
   oomol-preview: 0.0.2
   media-downloader: 0.0.1
+repository: https://github.com/vince-hz/yt-dlp-downloader
