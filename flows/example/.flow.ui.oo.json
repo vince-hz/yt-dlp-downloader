@@ -1,0 +1,31 @@
+{
+  "nodes": {
+    "downloader#1": {
+      "contentWidth": 880.676489617711,
+      "rfNode": {
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    },
+    "video_preview#1": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 945,
+          "y": 74.5
+        }
+      }
+    },
+    "downloader#2": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 1204.3710606060606,
+          "y": -92.87397727272727
+        }
+      }
+    }
+  }
+}

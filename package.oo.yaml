@@ -1,0 +1,19 @@
+version: 0.0.1
+scripts:
+  # Script executed when the container is first loaded
+  # eg: bootstrap: pip install pandas
+  bootstrap: |
+    npm install
+    pip install -r requirements.txt
+    apt update && apt install -y openssh-client
+    wget https://github.com/oomol/sshexec/releases/download/v1.0.6/installer.sh --output-document /tmp/installer.sh
+    bash +x /tmp/installer.sh
+icon: ":twemoji:down-arrow:currentColor:"
+name: media-downloader
+description: |-
+  A feature-rich audio/video downloader.
+  Youtube, viemo, tiktok......
+displayName: MediaDownloaer
+dependencies:
+  oomol-preview: 0.0.2
+  media-downloader: 0.0.1

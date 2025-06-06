@@ -1,0 +1,28 @@
+nodes:
+  - task: self::downloader
+    title: "MediaDownloader #1"
+    node_id: downloader#1
+    inputs_from:
+      - handle: targetURL
+        value: https://www.youtube.com/watch?v=d8CdjWJubU0
+      - handle: saveTo
+        value: /oomol-driver/oomol-storage/tmp.mp4
+        schema_overrides:
+          []
+  - task: oomol-preview::video_preview
+    title: "Video preview #1"
+    node_id: video_preview#1
+    inputs_from:
+      - handle: video_path
+        from_node:
+          - node_id: downloader#1
+            output_handle: savedPath
+  - task: media-downloader::downloader
+    title: "MediaDownloader #2"
+    node_id: downloader#2
+    inputs_from:
+      - handle: targetURL
+      - handle: saveTo
+        schema_overrides:
+          - ui:options:
+              selected: 1
