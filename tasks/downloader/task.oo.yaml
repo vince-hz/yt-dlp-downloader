@@ -29,4 +29,4 @@ executor:
     spawn: false
     entry: __init__.py
 title: MediaDownloader
-icon: ":logos:python:"
+icon: ":carbon:cloud-download:"

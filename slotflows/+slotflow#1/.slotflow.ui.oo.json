@@ -1,0 +1,30 @@
+{
+  "nodes": {
+    "downloader#1": {
+      "rfNode": {
+        "position": {
+          "x": 486,
+          "y": 0
+        }
+      }
+    }
+  },
+  "pseudoNodes": {
+    "input": {
+      "rfNode": {
+        "position": {
+          "x": -69,
+          "y": 0
+        }
+      }
+    },
+    "output": {
+      "rfNode": {
+        "position": {
+          "x": 972,
+          "y": 85.5
+        }
+      }
+    }
+  }
+}
