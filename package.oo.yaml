@@ -1,4 +1,4 @@
-version: 0.0.2
+version: 0.0.3
 scripts:
   # Script executed when the container is first loaded
   # eg: bootstrap: pip install pandas
@@ -15,6 +15,6 @@ description: |-
   Youtube, viemo, tiktok......
 displayName: MediaDownloaer
 dependencies:
-  oomol-preview: 0.0.1
+  array: 0.1.0
 repository: https://github.com/vince-hz/yt-dlp-downloader
-releaseNotes: Update dependency
+releaseNotes: Add Batch media download

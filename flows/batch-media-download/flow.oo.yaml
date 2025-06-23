@@ -1,0 +1,8 @@
+nodes:
+  - node_id: batch-media-download#1
+    title: "Batch Media Download #1"
+    inputs_from:
+      - handle: array
+      - handle: saveTo
+    subflow: self::batch-media-download
+title: Batch Media Download
