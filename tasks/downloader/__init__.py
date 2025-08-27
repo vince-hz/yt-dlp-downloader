@@ -24,5 +24,5 @@ def main(params: Inputs, context: Context) -> Outputs:
     if params['saveTo']:
         saveTo = params['saveTo']
 
-    path = download_imp.download_video_advanced(params['targetURL'], saveTo, cookiePath, 'best', False, progressHook)
+    path = download_imp.download_video_advanced(params['targetURL'], saveTo, cookie_path=cookiePath, subtitle=False, progress_callback=progressHook)
     return {'savedPath': path}

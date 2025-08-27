@@ -14,6 +14,7 @@ nodes:
     title: "MediaDownloader #2"
     inputs_from:
       - handle: targetURL
+        value: https://www.youtube.com/watch?v=HQ5PgPmmjpI&list=RDHQ5PgPmmjpI&start_radio=1
       - handle: saveTo
         value: null
       - handle: cookies
