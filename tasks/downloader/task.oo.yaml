@@ -20,7 +20,8 @@ inputs_def:
   - handle: cookies
     json_schema:
       type: string
-    value: ""
+      ui:widget: file
+    value:
     nullable: true
 outputs_def:
   - handle: savedPath

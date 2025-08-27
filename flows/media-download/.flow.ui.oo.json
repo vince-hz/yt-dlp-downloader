@@ -8,6 +8,15 @@
           "y": -280.3730776777093
         }
       }
+    },
+    "downloader#2": {
+      "contentWidth": 450,
+      "rfNode": {
+        "position": {
+          "x": 410,
+          "y": 210
+        }
+      }
     }
   }
 }

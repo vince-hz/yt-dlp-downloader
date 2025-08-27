@@ -16,12 +16,10 @@ def main(params: Inputs, context: Context) -> Outputs:
     def progressHook(value):
         context.report_progress(value)
 
-    cookie_file_content = params['cookies']
+    cookies = params['cookies']
     cookiePath = ""
-    if cookie_file_content:
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as f:
-            f.write(cookie_file_content)
-            cookiePath = f.name
+    if cookies:
+        cookiePath = cookies
     saveTo = context.session_dir
     if params['saveTo']:
         saveTo = params['saveTo']

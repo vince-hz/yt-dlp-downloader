@@ -9,6 +9,14 @@ nodes:
         schema_overrides:
           []
       - handle: cookies
-        value: ""
+    task: self::downloader
+  - node_id: downloader#2
+    title: "MediaDownloader #2"
+    inputs_from:
+      - handle: targetURL
+      - handle: saveTo
+        value: null
+      - handle: cookies
+        value: null
     task: self::downloader
 title: Media Download
