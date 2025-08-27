@@ -5,7 +5,8 @@ from typing import Optional, Dict, Any
 
 def download_video_advanced(
     url: str, 
-    save_path: str, 
+    save_path: str,
+    cookie_path: str = "",
     quality: str = 'best',
     subtitle: bool = False,
     progress_callback: Optional[callable] = None
@@ -47,6 +48,9 @@ def download_video_advanced(
         
         ydl_opts['format'] = quality
         
+        if len(cookie_path) > 0:
+            ydl_opts['cookiefile'] = cookie_path
+
         # 字幕选项
         if subtitle:
             ydl_opts['writesubtitles'] = True

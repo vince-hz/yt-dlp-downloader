@@ -1,12 +1,14 @@
 nodes:
-  - node_id: downloader#2
-    title: "MediaDownloader #2"
+  - node_id: downloader#1
+    title: "MediaDownloader #1"
     inputs_from:
       - handle: targetURL
         value: https://www.youtube.com/watch?v=d8CdjWJubU0
       - handle: saveTo
+        value:
         schema_overrides:
-          - ui:options:
-              selected: 1
+          []
+      - handle: cookies
+        value: ""
     task: self::downloader
 title: Media Download

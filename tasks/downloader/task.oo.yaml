@@ -13,8 +13,15 @@ inputs_def:
           ui:widget: dir
       ui:options:
         labels:
-          - savePath
-          - saveDir
+          - file
+          - dir
+    value:
+    nullable: true
+  - handle: cookies
+    json_schema:
+      type: string
+    value: ""
+    nullable: true
 outputs_def:
   - handle: savedPath
     description: Output
