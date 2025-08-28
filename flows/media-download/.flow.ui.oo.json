@@ -1,20 +1,11 @@
 {
   "nodes": {
-    "downloader#1": {
-      "contentWidth": 450,
-      "rfNode": {
-        "position": {
-          "x": 225.00693825358167,
-          "y": -280.3730776777093
-        }
-      }
-    },
     "downloader#2": {
       "contentWidth": 450,
       "rfNode": {
         "position": {
-          "x": 410,
-          "y": 210
+          "x": 145.53232140912593,
+          "y": -41.82380551083233
         }
       }
     }

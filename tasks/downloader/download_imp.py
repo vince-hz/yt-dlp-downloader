@@ -8,12 +8,13 @@ def download_video_advanced(
     url: str,
     save_path: str,
     *,
+    post_process_to_mp4: bool = True,
     cookie_path: str = "",
     quality: Any = (
-        "best[height=720][vcodec^=avc1]/"  # 首选720p H.264
-        "best[height=480][vcodec^=avc1]/"  # 备选480p H.264
-        "worst[vcodec^=avc1]/"  # 最低质量H.264
-        "best"  # 最后选择任何格式
+        "best[vcodec^=avc1][ext=mp4][height<=720]/"  # 明确要求 mp4 格式
+        "best[vcodec^=avc1][ext!=ts][height<=720]/"  # 排除 .ts 文件
+        "best[ext=mp4][height<=720]/"  # 任何编码的 mp4
+        "best[ext!=ts]"  # 排除所有 ts 格式
     ),
     subtitle: bool = False,
     progress_callback: Optional[callable] = None,
@@ -24,6 +25,7 @@ def download_video_advanced(
     Args:
         url (str): 视频URL
         save_path (str): 保存路径，可以是目录或具体文件名
+        post_process_to_mp4 (bool): 是否将下载的视频转换为mp4格式
         quality (str): 视频质量，默认为 'best'
         subtitle (bool): 是否下载字幕
         progress_callback (callable): 进度回调函数
@@ -51,6 +53,34 @@ def download_video_advanced(
             "outtmpl": output_template,
             "noplaylist": True,
         }
+
+        if post_process_to_mp4:
+            ydl_opts["postprocessors"] = [
+                {
+                    "key": "FFmpegVideoConvertor",
+                    "preferedformat": "mp4",
+                }
+            ]
+            # 确保使用 FFmpeg
+            ydl_opts["prefer_ffmpeg"] = True
+            # 强制重新编码而不是复制
+            ydl_opts["postprocessor_args"] = {
+                "ffmpeg_o": [
+                    "-c:v",
+                    "libx264",
+                    "-profile:v",
+                    "main",
+                    "-level:v",
+                    "3.1",
+                    "-c:a",
+                    "aac",
+                    "-f",
+                    "mp4",
+                    "-movflags",
+                    "+faststart",
+                ]
+            },
+
 
         ydl_opts["format"] = quality
 
