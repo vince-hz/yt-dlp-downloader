@@ -1,4 +1,4 @@
-version: 0.0.16
+version: 0.0.17
 scripts:
   # Script executed when the container is first loaded
   # eg: bootstrap: pip install pandas
@@ -17,4 +17,4 @@ displayName: MediaDownloaer
 dependencies:
   array: 0.1.0
 repository: https://github.com/vince-hz/yt-dlp-downloader
-releaseNotes: add layer
+releaseNotes: fix bug
