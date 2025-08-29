@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "media-downloader"
+version = "0.1.0"
+description = "OOMOL media download workflow project"
+authors = ["OOMOL"]
+readme = "README.md"
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.9"
+yt-dlp = "2025.5.22"
+
+[tool.poetry.group.dev.dependencies]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
