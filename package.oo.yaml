@@ -1,13 +1,8 @@
-version: 0.0.18
+version: 0.0.19
 scripts:
-  # Script executed when the container is first loaded
-  # eg: bootstrap: poetry add pandas
   bootstrap: |
-    npm install
     poetry install --no-root
-    apt update && apt install -y openssh-client
-    wget https://github.com/oomol/sshexec/releases/download/v1.0.6/installer.sh --output-document /tmp/installer.sh
-    bash +x /tmp/installer.sh
+    apt update && apt install -y ffmpeg
 icon: ":twemoji:down-arrow:currentColor:"
 name: media-downloader
 description: |-
@@ -17,4 +12,4 @@ displayName: MediaDownloaer
 dependencies:
   array: 0.1.0
 repository: https://github.com/vince-hz/yt-dlp-downloader
-releaseNotes: update poetry
+releaseNotes: use normal ffmpeg
