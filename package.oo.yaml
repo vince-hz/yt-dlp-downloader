@@ -1,10 +1,10 @@
-version: 0.0.17
+version: 0.0.18
 scripts:
   # Script executed when the container is first loaded
-  # eg: bootstrap: pip install pandas
+  # eg: bootstrap: poetry add pandas
   bootstrap: |
     npm install
-    pip install -r requirements.txt
+    poetry install --no-root
     apt update && apt install -y openssh-client
     wget https://github.com/oomol/sshexec/releases/download/v1.0.6/installer.sh --output-document /tmp/installer.sh
     bash +x /tmp/installer.sh
@@ -17,4 +17,4 @@ displayName: MediaDownloaer
 dependencies:
   array: 0.1.0
 repository: https://github.com/vince-hz/yt-dlp-downloader
-releaseNotes: fix bug
+releaseNotes: update poetry
