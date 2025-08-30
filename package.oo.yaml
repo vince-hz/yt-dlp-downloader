@@ -1,4 +1,4 @@
-version: 0.0.19
+version: 0.0.20
 scripts:
   bootstrap: |
     poetry install --no-root
@@ -10,6 +10,6 @@ description: |-
   Youtube, viemo, tiktok......
 displayName: MediaDownloaer
 dependencies:
-  array: 0.1.0
+  {}
 repository: https://github.com/vince-hz/yt-dlp-downloader
 releaseNotes: use normal ffmpeg

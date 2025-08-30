@@ -15,7 +15,7 @@ inputs_def:
         labels:
           - file
           - dir
-    value:
+    value: /oomol-driver/oomol-storage
     nullable: true
   - handle: cookies
     json_schema:
