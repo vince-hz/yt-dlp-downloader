@@ -1,10 +1,10 @@
 inputs_def:
   - handle: targetURL
-    description: Input
+    description: 需要下载的媒体链接地址
     json_schema:
       type: string
   - handle: saveTo
-    description: Where to save your media.
+    description: 你希望保存的位置，可以选择文件夹或者文件名。可以为空，会自动保存到临时目录中。
     json_schema:
       anyOf:
         - type: string
@@ -18,6 +18,7 @@ inputs_def:
     value: /oomol-driver/oomol-storage
     nullable: true
   - handle: cookies
+    description: 用于下载时的校验，下载失败可以尝试填入。
     json_schema:
       type: string
       ui:widget: file
@@ -25,7 +26,7 @@ inputs_def:
     nullable: true
 outputs_def:
   - handle: savedPath
-    description: Output
+    description: 下载后的文件保存位置
     json_schema:
       type: string
       ui:widget: file
