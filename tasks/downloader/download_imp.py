@@ -84,6 +84,11 @@ def download_video_advanced(
 
         ydl_opts["format"] = quality
 
+        print("cookiefile path", cookie_path)
+        with open(cookie_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+            print(content)
+
         if len(cookie_path) > 0:
             ydl_opts["cookiefile"] = cookie_path
 
