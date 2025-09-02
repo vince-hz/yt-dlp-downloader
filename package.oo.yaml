@@ -1,4 +1,4 @@
-version: 0.0.24
+version: 0.0.25
 scripts:
   bootstrap: |
     poetry install --no-root
@@ -12,4 +12,4 @@ displayName: MediaDownloaer
 dependencies:
   {}
 repository: https://github.com/vince-hz/yt-dlp-downloader
-releaseNotes: Debug version
+releaseNotes: update version
