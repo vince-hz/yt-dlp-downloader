@@ -84,12 +84,16 @@ def download_video_advanced(
 
         ydl_opts["format"] = quality
 
-        print("cookiefile path", cookie_path)
-        with open(cookie_path, 'r', encoding='utf-8') as file:
-            content = file.read()
-            print(content)
+        if cookie_path:
+            print("cookiefile path", cookie_path)
+            with open(cookie_path, 'r', encoding='utf-8') as file:
+                content = file.read()
+                if content:
+                    print("Cookie content is not empty")
+                else:
+                    print("Cookie content is empty")
 
-        if len(cookie_path) > 0:
+        if cookie_path:
             ydl_opts["cookiefile"] = cookie_path
 
         # 字幕选项
