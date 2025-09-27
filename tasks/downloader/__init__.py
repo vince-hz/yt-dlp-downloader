@@ -5,7 +5,7 @@ class Inputs(typing.TypedDict):
     saveTo: (str | None) | None
     cookies: str | None
 class Outputs(typing.TypedDict):
-    savedPath: str
+    savedPath: typing.NotRequired[str]
 #endregion
 
 from oocana import Context

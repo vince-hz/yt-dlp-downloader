@@ -1,14 +1,12 @@
-version: 0.0.26
+version: 0.0.27
 scripts:
   bootstrap: |
     poetry install --no-root
     apt update && apt install -y ffmpeg
-icon: ":twemoji:down-arrow:currentColor:"
+icon: "./icon.png"
 name: media-downloader
-description: |-
-  A feature-rich audio/video downloader.
-  Youtube, viemo, tiktok......
-displayName: MediaDownloaer
+description: "%a-feature-rich-audio-video-downloader-youtube-viemo-tiktok%"
+displayName: "%mediadownloaer%"
 dependencies:
   {}
 repository: https://github.com/vince-hz/yt-dlp-downloader

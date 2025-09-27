@@ -1,94 +1,115 @@
-# Video Downloader based on yt-dlp
+# Media Downloader
 
-This Python script provides a convenient wrapper around the powerful `yt-dlp` library to download videos from YouTube and other video sites. It allows for more control over the download process, including quality selection, subtitle downloads, and progress reporting.
+A powerful and easy-to-use media downloader for the OOMOL platform that lets you download videos and audio from popular websites like YouTube, Vimeo, TikTok, and many more.
 
-## Features
+## 🎯 What Can You Do?
 
-- Download single videos from various platforms supported by `yt-dlp`.
-- Specify the desired video quality (e.g., 'best', '1080p', '720p').
-- Automatically download available subtitles for the video.
-- Provides a progress callback mechanism to track download status in real-time.
-- Flexible output path: save to a specific directory or define the exact output filename.
+With this media downloader, you can:
 
-## Requirements
+- **Download videos** from 1000+ supported websites
+- **Extract audio** from video content
+- **Choose video quality** (720p, 1080p, 4K when available)
+- **Automatic format conversion** to MP4 for maximum compatibility
+- **Batch downloads** using workflows
+- **Custom save locations** - choose where your files go
+- **Cookie support** for downloading private or age-restricted content
 
-- Python 3.6+
-- `yt-dlp`
+## 🧩 Available Blocks
 
-You can install the required Python library using pip:
+### MediaDownloader Block
 
-```bash
-pip install yt-dlp
-```
+The main block that handles all your downloading needs.
 
-## Usage
+**What it does:**
+- Downloads videos and audio from any supported platform
+- Automatically converts videos to MP4 format for universal playback
+- Provides real-time download progress
+- Handles authentication via cookie files when needed
 
-The primary component is the `download_video_advanced` function located in `download_imp.py`. You can import and use this function in your own Python projects.
+**Inputs:**
+- **Media URL** - The link to the video/audio you want to download
+- **Save Location** - Where you want to save the file (optional - defaults to temporary storage)
+- **Cookies** - Cookie file for accessing private content (optional)
 
-### Function Signature
+**Output:**
+- **File Path** - The location where your downloaded file was saved
 
-```python
-def download_video_advanced(
-    url: str,
-    save_path: str,
-    quality: str = 'best',
-    subtitle: bool = False,
-    progress_callback: Optional[callable] = None
-) -> Optional[str]:
-```
+## 🚀 How to Use
 
-### Parameters
+### Simple Download
+1. Drag the **MediaDownloader** block into your workflow
+2. Enter the URL of the media you want to download
+3. Run the workflow
+4. Your file will be downloaded automatically!
 
-- `url` (str): The URL of the video you want to download.
-- `save_path` (str): The path where the video should be saved.
-    - If it's a directory (e.g., `/path/to/downloads`), the video will be saved inside with its original title.
-    - If it's a full file path (e.g., `/path/to/my_video.mp4`), the video will be saved with that specific name.
-- `quality` (str, optional): The desired video quality. This corresponds to the `format` option in `yt-dlp`. Defaults to `'best'`.
-- `subtitle` (bool, optional): Set to `True` to download subtitles along with the video. Defaults to `False`.
-- `progress_callback` (callable, optional): A function that will be called during the download with progress information. The function should accept a single argument (a float representing the percentage).
+### Custom Save Location
+1. Connect a file path to the "Save Location" input
+2. Choose whether you want to specify a folder or exact filename
+3. The downloader will save your file exactly where you want it
 
-### Returns
+### Private Content Download
+1. Export cookies from your browser for the website
+2. Connect the cookie file to the "Cookies" input
+3. The downloader can now access content that requires login
 
-- `(Optional[str])`: The full path to the downloaded video file if the download is successful, otherwise `None`.
+## 🌟 Use Cases
 
-## Example
+### Content Creators
+- Download reference videos for editing projects
+- Extract audio tracks for podcasts or music production
+- Archive your own content from various platforms
 
-Here is a basic example of how to use the `download_video_advanced` function.
+### Educators
+- Download educational videos for offline viewing
+- Create local libraries of instructional content
+- Prepare materials for presentations without internet dependency
 
-```python
-from download_imp import download_video_advanced
-from typing import Optional
+### Personal Use
+- Save favorite videos for offline viewing
+- Download music and podcasts for travel
+- Archive important content before it gets removed
 
-def my_progress_hook(percent: float):
-    # A simple progress bar
-    bar_length = 20
-    filled_length = int(bar_length * percent // 100)
-    bar = '█' * filled_length + '-' * (bar_length - filled_length)
-    print(f'\rDownloading: |{bar}| {percent:.2f}%', end='')
-    if percent == 100:
-        print()
+### Business Applications
+- Download training videos for employee onboarding
+- Archive marketing content and competitor analysis
+- Create offline presentations with multimedia content
 
-# URL of the video to download
-video_url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+## 🔧 Technical Features
 
-# Path to save the video
-# This will save the video in the 'my_videos' directory
-save_directory = "./my_videos"
+- **Universal Compatibility**: Supports 1000+ websites including YouTube, Vimeo, TikTok, Twitter, Instagram, and more
+- **Quality Options**: Automatically selects the best available quality up to 720p by default
+- **Format Standardization**: Converts all downloads to MP4 for maximum device compatibility
+- **Progress Tracking**: Real-time download progress with speed and percentage indicators
+- **Error Handling**: Graceful handling of network issues and invalid URLs
+- **Cookie Support**: Full authentication support via browser cookie import
 
-print(f"Starting download for: {video_url}")
+## 📋 Supported Platforms
 
-# Call the download function
-final_path: Optional[str] = download_video_advanced(
-    url=video_url,
-    save_path=save_directory,
-    quality='best',
-    subtitle=True,
-    progress_callback=my_progress_hook
-)
+This downloader works with hundreds of websites, including:
 
-if final_path:
-    print(f"Download complete! Video saved at: {final_path}")
-else:
-    print("Download failed.")
+- **Video Platforms**: YouTube, Vimeo, Dailymotion, Twitch
+- **Social Media**: TikTok, Twitter, Instagram, Facebook
+- **Educational**: Khan Academy, Coursera, edX
+- **News & Media**: BBC, CNN, NBC, ABC
+- **And many more...**
 
-```
+## 🛠️ Installation Requirements
+
+The system automatically installs required dependencies:
+- **yt-dlp**: The core downloading engine
+- **FFmpeg**: For video processing and conversion
+- **Python environment**: Managed automatically by OOMOL
+
+## 📞 Support & Updates
+
+- **Version**: 0.0.26
+- **Repository**: [GitHub - Media Downloader](https://github.com/vince-hz/yt-dlp-downloader)
+- **Latest Features**: Cookie content validation and improved error handling
+
+## ⚖️ Legal Notice
+
+Please respect copyright laws and website terms of service when downloading content. Only download content you have permission to download or that falls under fair use guidelines in your jurisdiction.
+
+---
+
+*Built for the OOMOL platform - Making media downloading simple and powerful for everyone.*

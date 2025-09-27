@@ -1,4 +1,3 @@
-from ctypes import Union
 import yt_dlp
 from pathlib import Path
 from typing import Optional, Any
@@ -11,32 +10,32 @@ def download_video_advanced(
     post_process_to_mp4: bool = True,
     cookie_path: str = "",
     quality: Any = (
-        "best[vcodec^=avc1][ext=mp4][height<=720]/"  # 明确要求 mp4 格式
-        "best[vcodec^=avc1][ext!=ts][height<=720]/"  # 排除 .ts 文件
-        "best[ext=mp4][height<=720]/"  # 任何编码的 mp4
-        "best[ext!=ts]"  # 排除所有 ts 格式
+        "best[vcodec^=avc1][ext=mp4][height<=720]/"  # Explicitly require mp4 format
+        "best[vcodec^=avc1][ext!=ts][height<=720]/"  # Exclude .ts files
+        "best[ext=mp4][height<=720]/"  # Any codec mp4
+        "best[ext!=ts]"  # Exclude all ts formats
     ),
     subtitle: bool = False,
     progress_callback: Optional[callable] = None,
 ) -> Optional[str]:
     """
-    使用 yt-dlp 下载视频（增强版）
+    Download video using yt-dlp (enhanced version)
 
     Args:
-        url (str): 视频URL
-        save_path (str): 保存路径，可以是目录或具体文件名
-        post_process_to_mp4 (bool): 是否将下载的视频转换为mp4格式
-        quality (str): 视频质量，默认为 'best'
-        subtitle (bool): 是否下载字幕
-        progress_callback (callable): 进度回调函数
+        url (str): Video URL
+        save_path (str): Save path, can be directory or specific filename
+        post_process_to_mp4 (bool): Whether to convert downloaded video to mp4 format
+        quality (str): Video quality, default is 'best'
+        subtitle (bool): Whether to download subtitles
+        progress_callback (callable): Progress callback function
 
     Returns:
-        str: 最终保存的文件路径，如果下载失败返回 None
+        str: Final saved file path, returns None if download fails
     """
     try:
         save_path = Path(save_path)
 
-        # 判断是目录还是文件
+        # Determine if it's a directory or file
         if save_path.suffix == "" or save_path.is_dir():
             output_dir = save_path
             output_template = str(output_dir / "%(title)s.%(ext)s")
@@ -45,10 +44,10 @@ def download_video_advanced(
             filename_without_ext = save_path.stem
             output_template = str(output_dir / f"{filename_without_ext}.%(ext)s")
 
-        # 确保输出目录存在
+        # Ensure output directory exists
         output_dir.mkdir(parents=True, exist_ok=True)
 
-        # 配置选项
+        # Configuration options
         ydl_opts = {
             "outtmpl": output_template,
             "noplaylist": True,
@@ -61,9 +60,9 @@ def download_video_advanced(
                     "preferedformat": "mp4",
                 }
             ]
-            # 确保使用 FFmpeg
+            # Ensure FFmpeg is used
             ydl_opts["prefer_ffmpeg"] = True
-            # 强制重新编码而不是复制
+            # Force re-encoding instead of copying
             ydl_opts["postprocessor_args"] = {
                 "ffmpeg_o": [
                     "-c:v",
@@ -96,7 +95,7 @@ def download_video_advanced(
         if cookie_path:
             ydl_opts["cookiefile"] = cookie_path
 
-        # 字幕选项
+        # Subtitle options
         if subtitle:
             ydl_opts["writesubtitles"] = True
             ydl_opts["writeautomaticsub"] = True
@@ -121,32 +120,32 @@ def download_video_advanced(
 
         ydl_opts["progress_hooks"] = [download_hook]
 
-        # 执行下载
+        # Execute download
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             ydl.download([url])
 
         return downloaded_file
 
     except Exception as e:
-        print(f"下载失败: {str(e)}")
+        print(f"Download failed: {str(e)}")
         return None
 
 
-# 使用示例
+# Usage example
 if __name__ == "__main__":
 
     def progress_hook(d):
         if d["status"] == "downloading":
             percent = d.get("_percent_str", "N/A")
             speed = d.get("_speed_str", "N/A")
-            print(f"\r下载进度: {percent} 速度: {speed}", end="", flush=True)
+            print(f"\rDownload progress: {percent} Speed: {speed}", end="", flush=True)
         elif d["status"] == "finished":
-            print(f"\n下载完成: {d['filename']}")
+            print(f"\nDownload completed: {d['filename']}")
 
     url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
-    # 下载视频
+    # Download video
     result = download_video_advanced(
         url, "/oomol-driver/oomol-storage", progress_callback=progress_hook
     )
-    print(f"最终保存路径: {result}")
+    print(f"Final save path: {result}")

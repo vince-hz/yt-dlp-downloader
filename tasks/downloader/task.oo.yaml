@@ -1,10 +1,11 @@
 inputs_def:
   - handle: targetURL
-    description: 需要下载的媒体链接地址
+    description: Media link URL to download
     json_schema:
       type: string
   - handle: saveTo
-    description: 你希望保存的位置，可以选择文件夹或者文件名。可以为空，会自动保存到临时目录中。
+    description: Location where you want to save, can choose folder or filename. Can
+      be empty, will automatically save to temporary directory.
     json_schema:
       anyOf:
         - type: string
@@ -18,7 +19,7 @@ inputs_def:
     value: /oomol-driver/oomol-storage
     nullable: true
   - handle: cookies
-    description: 用于下载时的校验，下载失败可以尝试填入。
+    description: Used for validation during download, try filling in if download fails.
     json_schema:
       type: string
       ui:widget: file
@@ -26,7 +27,7 @@ inputs_def:
     nullable: true
 outputs_def:
   - handle: savedPath
-    description: 下载后的文件保存位置
+    description: File save location after download
     json_schema:
       type: string
       ui:widget: file
@@ -39,3 +40,6 @@ executor:
     entry: __init__.py
 title: MediaDownloader
 icon: ":carbon:cloud-download:"
+description: "Download videos and media files from various platforms using
+  yt-dlp. Supports multiple formats, quality options, and automatic conversion
+  to MP4."
